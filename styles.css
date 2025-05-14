@@ -1,54 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap');
 
-*{
+/* CSS Variables for better maintainability */
+:root {
+    --primary-color: #004d00;
+    --secondary-color: lightgreen;
+    --background-color: white;
+    --text-color: white;
+    --font-size-base: 62.5%;
+}
+
+/* Reset and global styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     border: none;
     outline: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
-html{
-    font-size: 62.5%;
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
 }
 
-body{
+body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
     background-size: cover;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
-header{
+/* Header styles */
+header {
     margin-top: 20px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 1rem 9%;
-    background-color: transparent;
-    filter: drop-shadow(10px);
+    background-color: var(--background-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background-color: white;
+    filter: drop-shadow(10px);
 }
 
-.logo{
+.logo {
     width: 150px;
+    transition: transform 0.3s ease;
 }
 
-.logo:hover{
+.logo:hover {
     transform: scale(1.1);
 }
 
-nav a{
+nav a {
     font-size: 1.8rem;
-    color: #004d00;
+    color: var(--primary-color);
     margin-left: 4rem;
     font-weight: 500;
     transition: 0.3s ease;
@@ -56,98 +69,102 @@ nav a{
 }
 
 nav a:hover,
-nav a.active{
-    color: lightgreen;
-    border-bottom: 3px solid lightgreen;
+nav a.active {
+    color: var(--secondary-color);
+    border-bottom: 3px solid var(--secondary-color);
 }
 
-section{
+/* Section styles */
+section {
     min-height: 100vh;
     padding: 10rem 9% 5rem;
     background-image: url('office_image_green.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: var(--primary-color); /* Fallback color */
 }
 
-.info{
+/* Info cards */
+.info, .info_2 {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8rem;
 }
 
-.info .info_content{
-    background-color: white;
-    position: fixed;
-    color: #004d00;
+.info_content, .info_content_2 {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.info .info_content h1{
+.info_content h1,
+.info_content_2 h1 {
     font-size: 6rem;
     font-weight: 700;
     line-height: 1.3;
-    text-align: center;
 }
 
-.info_content h3{
+.info_content h3,
+.info_content_2 h3 {
     font-size: 4rem;
     margin-bottom: 1rem;
     font-weight: 700;
-    text-align: center;
 }
 
-.info_content p{
+.info_content p,
+.info_content_2 p {
     font-size: 1.6rem;
-    text-align: center;
 }
 
-.insurance_logo {
+/* Image styles */
+.insurance_logo,
+.lenses_logo {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     width: 25%;
 }
 
-.info_2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8rem;
-}
-
-.info_2 .info_content_2{
-    background-color: white;
-    color: #004d00;
-}
-
-.info_2 .info_content_2 h1{
-    font-size: 6rem;
-    font-weight: 700;
-    line-height: 1.3;
-    text-align: center;
-}
-
-.info_content_2 h3{
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    text-align: center;
-}
-
-.info_content_2 p{
-    font-size: 1.6rem;
-    text-align: center;
-}
-
 .lenses_logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     width: 50%;
 }
 
+/* Responsive PDF iframe */
 .PDF_files {
     width: 100%;
     height: 900px;
+}
+
+/* Responsive design using media queries */
+@media (max-width: 768px) {
+    nav a {
+        font-size: 1.5rem;
+        margin-left: 2rem;
+    }
+
+    .info_content h1,
+    .info_content_2 h1 {
+        font-size: 4rem;
+    }
+
+    .info_content h3,
+    .info_content_2 h3 {
+        font-size: 3rem;
+    }
+
+    .info_content p,
+    .info_content_2 p {
+        font-size: 1.4rem;
+    }
+
+    .insurance_logo,
+    .lenses_logo {
+        width: 50%;
+    }
+
+    .PDF_files {
+        height: 600px;
+    }
 }
